@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :candidates
   resources :histories
+
   get 'display/index'
+  get 'display/crawl'
   root 'display#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
