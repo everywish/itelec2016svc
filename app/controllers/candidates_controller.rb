@@ -5,6 +5,7 @@ class CandidatesController < ApplicationController
   # GET /candidates.json
   def index
     @candidates = Candidate.all
+    @last_crawled = History.order("created_at").last
   end
 
   # GET /candidates/1
