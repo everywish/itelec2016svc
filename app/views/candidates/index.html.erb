@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Candidates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Necid</th>
+      <th>City</th>
+      <th>District</th>
+      <th>Party</th>
+      <th>Picture</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Address</th>
+      <th>Occupation</th>
+      <th>Education</th>
+      <th>Career</th>
+      <th>Criminal record</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.necid %></td>
+        <td><%= candidate.city %></td>
+        <td><%= candidate.district %></td>
+        <td><%= candidate.party %></td>
+        <td><%= candidate.picture %></td>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.gender %></td>
+        <td><%= candidate.age %></td>
+        <td><%= candidate.address %></td>
+        <td><%= candidate.occupation %></td>
+        <td><%= candidate.education %></td>
+        <td><%= candidate.career %></td>
+        <td><%= candidate.criminal_record %></td>
+        <td><%= link_to 'Show', candidate %></td>
+        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+        <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Candidate', new_candidate_path %>

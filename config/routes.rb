@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :candidates
+  resources :histories
   get 'display/index'
   root 'display#index'
 

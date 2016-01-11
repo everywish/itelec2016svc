@@ -1,2 +1,9 @@
 <h1>Display#index</h1>
 <p>Find me in app/views/display/index.html.erb</p>
+<%=@last_crawled.created_at%>
+<br/>
+<%=Time.now%>
+<br/>
+<%=(@last_crawled.created_at - Time.now)%>
+<br/>
+<%=@res%>

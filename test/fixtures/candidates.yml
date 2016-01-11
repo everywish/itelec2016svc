@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  necid: MyString
+  city: MyString
+  district: MyString
+  party: MyString
+  picture: MyString
+  name: MyString
+  gender: MyString
+  age: MyString
+  address: MyString
+  occupation: MyString
+  education: MyString
+  career: MyString
+  criminal_record: MyString
+
+two:
+  necid: MyString
+  city: MyString
+  district: MyString
+  party: MyString
+  picture: MyString
+  name: MyString
+  gender: MyString
+  age: MyString
+  address: MyString
+  occupation: MyString
+  education: MyString
+  career: MyString
+  criminal_record: MyString
