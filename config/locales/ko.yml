@@ -1,0 +1,291 @@
+ko:
+  Sign up: 사용자 등록
+  Log in: 로그인
+  Request again confirm mail: 인증메일 재발송
+  Forgot your password?: 패스워드를 잊으셨나요?
+  Send me reset password instructions: 인증메일을 다시 보내주세요
+
+  activerecord:
+    models:
+      candidate: 후보
+      user: 사용자
+      pistory: 이북 판매
+      paypal: 페이팔
+      order: 주문
+      promo: 프로모션
+    attributes:
+      candidate:
+        necid: 선관위일련번호
+        city: 시/도
+        district: 지역구
+        party: 소속정당
+        gender: 성별
+        age: 생년월일
+        address: 주소
+        occupation: 직업
+        count: 쿠폰수 
+        used: 적용수
+        price: 할인가격
+        
+      user:
+        approved: 승인
+        is_admin: 최고관리자
+        level: 등급
+        name: 이름
+        email: 이메일
+        password: 패스워드
+        password_confirmation: 패스워드확인
+      ebook:
+        title: 도서명
+        etitle: 영문 제목
+        author: 저자
+        price_original: 정상가격 (원)
+        price_sale: 할인가격 (원)
+        sort: 정렬
+        category: 카테고리
+        pre: 본문미리보기 파일
+        bottom_margin: 라이센스표시부 마진
+        description: 상세 설명
+        keyword: 키워
+        pub_date: 출판
+        cover: 커버이미지
+        pdf: PDF 파일
+      pistory:
+        downloadlimit: 다운로드 제한
+        price_original: 가격
+        ebook: 도서
+        order: 관련 주문
+        author: 저자
+        taxpaper: 증빙 요청
+        paytype: 지불 유형
+        payment_type: 지불 유형
+        email: 주문자 이메일
+        name: 주문자명
+      order:
+        price_original: 정상가격
+        price_total: 판매가격
+        taxpaper: 증빙 요청
+        taxssnnum: 증빙 번호(주민번호)
+        paytype: 지불 유형
+        payment_type: 지불 유형
+        email: 주문자 이메일
+        name: 주문자명
+        phone: 전화번호
+        subscribe: 구독신청여부
+        paid_at: 입금일
+
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: 은 패스워드와 동일해야 합니다.
+        order:
+          attributes:
+            title:
+              blank : 안돼
+
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "<b>%{total}</b>중의 %{entry_name}를(을) 표시하고 있습니다 <b>%{first} - %{last}</b>"
+      one_page:
+        display_entries: "<b>%{count}</b> 레코드 표시 중입니다 %{entry_name}"
+  views:
+    pagination:
+      first: "&laquo; 처음"
+      last: "마지막 &raquo;"
+      next: "다음 &rsaquo;"
+      previous: "&lsaquo; 이전"
+      truncate: "&hellip;"
+
+
+  date:
+    abbr_day_names:
+    - 일
+    - 월
+    - 화
+    - 수
+    - 목
+    - 금
+    - 토
+    abbr_month_names:
+    -
+    - 1월
+    - 2월
+    - 3월
+    - 4월
+    - 5월
+    - 6월
+    - 7월
+    - 8월
+    - 9월
+    - 10월
+    - 11월
+    - 12월
+    day_names:
+    - 일요일
+    - 월요일
+    - 화요일
+    - 수요일
+    - 목요일
+    - 금요일
+    - 토요일
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y년 %m월 %d일 (%a)"
+      short: "%m/%d"
+    month_names:
+    -
+    - 1월
+    - 2월
+    - 3월
+    - 4월
+    - 5월
+    - 6월
+    - 7월
+    - 8월
+    - 9월
+    - 10월
+    - 11월
+    - 12월
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 약 한 시간
+        other: 약 %{count}시간
+      about_x_months:
+        one: 약 한 달
+        other: 약 %{count}달
+      about_x_years:
+        one: 약 일 년
+        other: 약 %{count}년
+      almost_x_years:
+        one: 일 년 이하
+        other: "%{count}년 이하"
+      half_a_minute: 30초
+      less_than_x_minutes:
+        one: 일 분 이하
+        other: "%{count}분 이하"
+      less_than_x_seconds:
+        one: 일 초 이하
+        other: "%{count}초 이하"
+      over_x_years:
+        one: 일 년 이상
+        other: "%{count}년 이상"
+      x_days:
+        one: 하루
+        other: "%{count}일"
+      x_minutes:
+        one: 일 분
+        other: "%{count}분"
+      x_months:
+        one: 한 달
+        other: "%{count}달"
+      x_seconds:
+        one: 일 초
+        other: "%{count}초"
+    prompts:
+      day: 일
+      hour: 시
+      minute: 분
+      month: 월
+      second: 초
+      year: 년
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      accepted: 을(를) 반드시 확인해야 합니다
+      blank: 에 내용을 입력해 주세요
+      confirmation: 은(는) 서로 일치해야 합니다
+      empty: 에 내용을 입력해 주세요
+      equal_to: 은(는) %{count}과 같아야 합니다
+      even: 에 짝수를 입력해 주세요
+      exclusion: 은(는) 이미 예약되어 있는 값입니다
+      greater_than: 은(는) %{count}보다 커야 합니다
+      greater_than_or_equal_to: 은(는) %{count}보다 크거야 같아야 합니다
+      inclusion: 은(는) 목록에 포함되어 있는 값이 아닙니다
+      invalid: 은(는) 올바르지 않은 값입니다
+      less_than: 은(는) %{count}보다 작아야 합니다
+      less_than_or_equal_to: 은(는) %{count}과 작거나 같아야 합니다
+      not_a_number: 에 숫자를 입력해 주세요
+      not_an_integer: 에 정수를 입력해 주세요
+      odd: 에 홀수를 입력해 주세요
+      record_invalid: 데이터 검증에 실패하였습니다. %{errors}
+      taken: 은(는) 이미 존재합니다.
+      too_long: 은(는) %{count}자를 넘을 수 없습니다
+      too_short: 은(는) 적어도 %{count}자를 넘어야 합니다
+      wrong_length: 은(는) %{count}자여야 합니다
+    template:
+      body: '다음 항목에 문제가 발견되었습니다:'
+      header:
+        one: 한 개의 오류가 발생해 %{model}를 저장 할 수 없습니다
+        other: "%{count}개의 오류가 발생해 %{model}를 저장 할 수 없습니다"
+  helpers:
+    select:
+      prompt: 선택해주세요
+    submit:
+      create: 등록
+      submit: 제출
+      update: 갱신
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%n%u"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 원
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n%u"
+        units:
+          billion: 십억
+          million: 백만
+          quadrillion: 경
+          thousand: 천
+          trillion: 조
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n%u"
+        units:
+          byte: 바이트
+          gb: 기가바이트
+          kb: 킬로바이트
+          mb: 메가바이트
+          tb: 테라바이트
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ", "
+      two_words_connector: '와(과) '
+      words_connector: ", "
+  time:
+    am: 오전
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      long: "%Y년 %m월 %d일, %H시 %M분 %S초 %Z"
+      short: "%y/%m/%d %H:%M"
+    pm: 오후

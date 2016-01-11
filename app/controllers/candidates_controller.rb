@@ -31,15 +31,19 @@ class CandidatesController < ApplicationController
   # GET /candidates/new
   def new
     @candidate = Candidate.new
+    redirect_to '/candidates'
   end
 
   # GET /candidates/1/edit
   def edit
+    redirect_to '/candidates'
   end
 
   # POST /candidates
   # POST /candidates.json
   def create
+    redirect_to '/candidates'
+    return
     @candidate = Candidate.new(candidate_params)
 
     respond_to do |format|
@@ -56,6 +60,8 @@ class CandidatesController < ApplicationController
   # PATCH/PUT /candidates/1
   # PATCH/PUT /candidates/1.json
   def update
+    redirect_to '/candidates'
+    return
     respond_to do |format|
       if @candidate.update(candidate_params)
         format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
@@ -70,11 +76,13 @@ class CandidatesController < ApplicationController
   # DELETE /candidates/1
   # DELETE /candidates/1.json
   def destroy
-    @candidate.destroy
-    respond_to do |format|
-      format.html { redirect_to candidates_url, notice: 'Candidate was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to '/candidates'
+    return
+    #@candidate.destroy
+    #respond_to do |format|
+      #format.html { redirect_to candidates_url, notice: 'Candidate was successfully destroyed.' }
+      #format.json { head :no_content }
+    #end
   end
 
   private
