@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 20160111094329) do
   enable_extension "plpgsql"
 
   create_table "candidates", force: :cascade do |t|
-    t.string   "necid"
+    t.string   "necid",           null: false
     t.string   "city"
     t.string   "district"
+    t.string   "district_long"
     t.string   "party"
     t.string   "picture"
     t.string   "name"

@@ -1,69 +1,45 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Candidate -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Necid:</strong>
-  <%= @candidate.necid %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:necid) %>:</strong></dt>
+  <dd><%= @candidate.necid %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+  <dd><%= @candidate.city %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:district) %>:</strong></dt>
+  <dd><%= @candidate.district %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:district_long) %>:</strong></dt>
+  <dd><%= @candidate.district_long %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:party) %>:</strong></dt>
+  <dd><%= @candidate.party %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:picture) %>:</strong></dt>
+  <dd><%= @candidate.picture %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @candidate.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:gender) %>:</strong></dt>
+  <dd><%= @candidate.gender %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
+  <dd><%= @candidate.age %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dd><%= @candidate.address %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:occupation) %>:</strong></dt>
+  <dd><%= @candidate.occupation %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:education) %>:</strong></dt>
+  <dd><%= @candidate.education %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:career) %>:</strong></dt>
+  <dd><%= @candidate.career %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:criminal_record) %>:</strong></dt>
+  <dd><%= @candidate.criminal_record %></dd>
+</dl>
 
-<p>
-  <strong>City:</strong>
-  <%= @candidate.city %>
-</p>
-
-<p>
-  <strong>District:</strong>
-  <%= @candidate.district %>
-</p>
-
-<p>
-  <strong>Party:</strong>
-  <%= @candidate.party %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @candidate.picture %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @candidate.name %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @candidate.gender %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @candidate.age %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @candidate.address %>
-</p>
-
-<p>
-  <strong>Occupation:</strong>
-  <%= @candidate.occupation %>
-</p>
-
-<p>
-  <strong>Education:</strong>
-  <%= @candidate.education %>
-</p>
-
-<p>
-  <strong>Career:</strong>
-  <%= @candidate.career %>
-</p>
-
-<p>
-  <strong>Criminal record:</strong>
-  <%= @candidate.criminal_record %>
-</p>
-
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-<%= link_to 'Back', candidates_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              candidates_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_candidate_path(@candidate), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              candidate_path(@candidate),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

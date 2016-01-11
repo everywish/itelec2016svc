@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Candidate -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
 
-<h1>Listing Candidates</h1>
+총 <%=@candidates.size%>명
+<%if @last_crawled%>
+  <br/>마지막 업데이트 : <%=@last_crawled.created_at%> 
+<%end%>
+<hr/>
+<a href=/candidates.json>JSON 데이터</a>
 
-<table>
+
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Necid</th>
-      <th>City</th>
-      <th>District</th>
-      <th>Party</th>
-      <th>Picture</th>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Age</th>
-      <th>Address</th>
-      <th>Occupation</th>
-      <th>Education</th>
-      <th>Career</th>
-      <th>Criminal record</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:necid) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:district) %></th>
+      <th><%= model_class.human_attribute_name(:party) %></th>
+      <th><%= model_class.human_attribute_name(:picture) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:gender) %></th>
+      <th><%= model_class.human_attribute_name(:age) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:occupation) %></th>
+      <th><%= model_class.human_attribute_name(:education) %></th>
+      <th><%= model_class.human_attribute_name(:career) %></th>
+      <th><%= model_class.human_attribute_name(:criminal_record) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @candidates.each do |candidate| %>
       <tr>
-        <td><%= candidate.necid %></td>
+        <td><%= link_to candidate.necid, candidate_path(candidate) %></td>
         <td><%= candidate.city %></td>
         <td><%= candidate.district %></td>
         <td><%= candidate.party %></td>
@@ -38,14 +47,21 @@
         <td><%= candidate.education %></td>
         <td><%= candidate.career %></td>
         <td><%= candidate.criminal_record %></td>
-        <td><%= link_to 'Show', candidate %></td>
-        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
-        <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l candidate.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_candidate_path(candidate), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      candidate_path(candidate),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Candidate', new_candidate_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_candidate_path,
+            :class => 'btn btn-primary' %>
