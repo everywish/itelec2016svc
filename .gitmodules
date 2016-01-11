@@ -1,3 +1,6 @@
 [submodule "crawler/itelec2016"]
 	path = crawler/itelec2016
 	url = git@github.com:everywish/itelec2016.git
+[submodule "vendor/itelec2016"]
+	path = vendor/itelec2016
+	url = git@github.com:everywish/itelec2016.git
