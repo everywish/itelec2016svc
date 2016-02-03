@@ -16,7 +16,7 @@ class DisplayController < ApplicationController
         r['id'] = nil
         candidate = Candidate.find_by(necid: r['necid'])
         candidate = Candidate.new(r) if @candidate.nil?
-        candidate.save
+        candidate.save!
       end
     end
     @candidates = Candidate.all
