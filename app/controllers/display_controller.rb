@@ -15,10 +15,14 @@ class DisplayController < ApplicationController
 
       JSON.parse(@res).each do |r|
         r['necid'] = r['id']
-        r['id'] = nil
-        candidate = Candidate.find_by(necid: r['necid'])
-        candidate = Candidate.new(r) if candidate.blank?
-        candidate.save!
+        r.delete('id')
+        necid = r['necid']
+        Rails.logger.debug r
+        @candidate = Candidate.find_or_initialize_by(necid: necid)
+        @candidate.update_attributes(r)
+        if @candidate.changed?
+          @candidate.save!
+        end
       end
     end
     @candidates = Candidate.all
