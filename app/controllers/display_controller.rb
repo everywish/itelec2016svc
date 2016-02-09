@@ -20,6 +20,8 @@ class DisplayController < ApplicationController
           @candidate.save!
         end
       end
+
+      @last_crawled = History.order("created_at").last
     end
     @candidates = Candidate.all
   end
