@@ -4,8 +4,8 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = Candidate.all
     @last_crawled = History.order("created_at").last
+    @candidates = Candidate.where(:history_id=>@last_crawled.id)
   end
 
   # GET /candidates/1

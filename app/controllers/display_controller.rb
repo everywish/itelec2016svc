@@ -1,12 +1,15 @@
 class DisplayController < ApplicationController
   def index
+    @last_crawled = History.order("created_at").last
+    @candidates = Candidate.where(:history_id=>@last_crawled.id)
   end
 
   def crawl
     @last_crawled = History.order("created_at").last
 
     # 한시간마다.
-    if @last_crawled.nil? or (Time.now - @last_crawled.created_at) > 3600
+    #if @last_crawled.nil? or (Time.now - @last_crawled.created_at) > 3600
+    if true#@last_crawled.nil? or (Time.now - @last_crawled.created_at) > 3600
       @res = `bundle exec ruby ./lib/crawl/crawler/candi_list.rb`
       @history = History.new(:rawdata=>@res)
       @history.save
@@ -16,6 +19,7 @@ class DisplayController < ApplicationController
         Rails.logger.debug r
         @candidate = Candidate.find_or_initialize_by(necid: r['necid'])
         @candidate.update_attributes(r)
+        @candidate.history_id=@history.id
         if @candidate.changed?
           @candidate.save!
         end
@@ -23,6 +27,6 @@ class DisplayController < ApplicationController
 
       @last_crawled = History.order("created_at").last
     end
-    @candidates = Candidate.all
+    @candidates = Candidate.where(:history_id=>@last_crawled.id)
   end
 end
