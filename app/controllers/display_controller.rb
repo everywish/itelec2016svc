@@ -1,7 +1,7 @@
 class DisplayController < ApplicationController
   def index
     @last_crawled = History.order("created_at").last
-    @candidates = Candidate.where(:history_id=>@last_crawled.id)
+    @candidates = Candidate.count(:conditions=>"history_id=>#{@last_crawled.id}")
   end
 
   def crawl
@@ -9,7 +9,7 @@ class DisplayController < ApplicationController
 
     # 30분마다
     #if @last_crawled.nil? or (Time.now - @last_crawled.created_at) > 3600
-    if true#@last_crawled.nil? or (Time.now - @last_crawled.created_at) > 1800
+    if @last_crawled.nil? or (Time.now - @last_crawled.created_at) > 1800
       @res = `bundle exec ruby ./lib/crawl/crawler/candi_list.rb`
       @history = History.new(:rawdata=>@res)
       @history.save
