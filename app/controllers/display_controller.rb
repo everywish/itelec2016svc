@@ -1,7 +1,7 @@
 class DisplayController < ApplicationController
   def index
     @last_crawled = History.order("created_at").last
-    @candidates = Candidate.count(:conditions=>"history_id=#{@last_crawled.id}")
+    @candidates = Candidate.where(:history_id=>@last_crawled.id)
   end
 
   def crawl
